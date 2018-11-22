@@ -1,0 +1,50 @@
+
+/* Comment this out to disable prints and save space */
+#define BLYNK_PRINT stdout
+
+#ifdef RASPBERRY
+ #include <BlynkApiWiringPi.h>
+#else
+ #include <BlynkApiLinux.h>
+#endif
+#include <BlynkSocket.h>
+#include <BlynkOptionsParser.h>
+
+static BlynkTransportSocket _blynkTransport;
+BlynkSocket Blynk(_blynkTransport);
+#include <BlynkWidgets.h>
+
+BLYNK_WRITE(V0)
+{
+  printf("WebHook data:");
+  printf(param.asStr());
+}
+
+void setup()
+{
+  Blynk.virtualWrite(V0, "");
+
+  // You can perform HTTPS requests even if your hardware alone can't handle SSL
+  // Blynk  can also fetch much bigger messages,
+  // if hardware has enough RAM (set BLYNK_MAX_READBYTES to 4096)
+  //Blynk.virtualWrite(V0, "https://api.sunrise-sunset.org/json?lat=50.4495484&lng=30.5253873&date=2016-10-01");
+}
+
+void loop()
+{
+  Blynk.run();
+}
+
+int main()
+{
+
+
+  
+  Blynk.begin("ec0bfcf4ac5e4529814fb4ff2d9364a9", "89.39.22.36", 8082);
+  setup();
+  while(true) {
+    loop();
+  }
+
+  return 0;
+}
