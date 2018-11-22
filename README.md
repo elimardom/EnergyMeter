@@ -1,9 +1,5 @@
 # EnergyMeter
-TFG medidor de consumo y gestion del mismo via app
+TFG  -- Medidor de consumo y gestión usando app Blynk
 
-
-Lnkit smart 7688 duo
-Rpi 3b 
-SCT013030
-Trafo
-Virtual Machine -> Google
+ADCTIMER_blynk --> codigo de lectura de los sensores y servir a raspberry
+linux/main.cpp --> codigo de recogida de datos y procesado de datos para servir a la app
